@@ -2,10 +2,12 @@ import telebot
 import subprocess
 import datetime
 import os
+from pymongo import MongoClient
 
-bot = telebot.TeleBot('78243904')
-admin_id = ["80249","6312238286"]
+bot = telebot.TeleBot('7780136598:AAFyh8ZpwzOoOBqS74aB16iUqhUtIdJgLro')
+admin_id = ["5529282036","7702119573"]
 USER_FILE = "users.txt"
+MONGO_URI = 'mongodb+srv://Bishal:Bishal@bishal.dffybpx.mongodb.net/?retryWrites=true&w=majority&appName=Bishal'
 
 LOG_FILE = "log.txt"
 
@@ -30,6 +32,10 @@ def read_free_users():
                         print(f"Ignoring invalid line in free user file: {line}")
     except FileNotFoundError:
         pass
+
+client = MongoClient(MONGO_URI, tlsCAFile=certifi.where())
+db = client['zoya']
+users_collection = db.users
 
 
 allowed_user_ids = read_users()
@@ -261,7 +267,7 @@ def start_attack_reply(message, target, port, time):
     user_info = message.from_user
     username = user_info.username if user_info.username else user_info.first_name
     
-    response = f"🚀 BGMI KI MA CHUD GAYI HAI 🥵 JALDI SE FEEDBACK DO @soulcracks🚀\n\n𝙏𝙖𝙧𝙜𝙚𝙩: {target}\n𝙏𝙞𝙢𝙚: {time} 𝙎𝙚𝙘𝙤𝙣𝙙𝙨\n𝘼𝙩𝙩𝙖𝙘𝙠𝙚𝙧 𝙣𝙖𝙢𝙚: @{username}"
+    response = f"🚀 BGMI KI MA CHUD GAYI HAI 🥵 JALDI SE FEEDBACK DO @TGRAZEEM🚀\n\n𝙏𝙖𝙧𝙜𝙚𝙩: {target}\n𝙏𝙞𝙢𝙚: {time} 𝙎𝙚𝙘𝙤𝙣𝙙𝙨\n𝘼𝙩𝙩𝙖𝙘𝙠𝙚𝙧 𝙣𝙖𝙢𝙚: @{username}"
     bot.reply_to(message, response)
 
 
@@ -299,7 +305,7 @@ def handle_bgmi(message):
                 process = subprocess.run(full_command, shell=True)
                 response = f"[𝘼𝙩𝙩𝙖𝙘𝙠 𝙘𝙤𝙢𝙥𝙡𝙚𝙩𝙚𝙙] 😈BAHAN KE LODE FEEDBACK DEDE AB KYA MA CHUDATA RAHEGA ATTACK LAGA LAGA KE 😈"
         else:
-            response = "✅ 𝙋𝙡𝙚𝙖𝙨𝙚 𝙥𝙧𝙤𝙫𝙞𝙙𝙚 <𝙄𝙋> <𝙋𝙊𝙍𝙏> <𝙏𝙄𝙈𝙀> 😈ANDI MANDI SANDI JO FEEDBACK NA DE OSKI MA RANDI 😈 SEND A FEEDBACK @SOULCRACKS"
+            response = "✅ 𝙋𝙡𝙚𝙖𝙨𝙚 𝙥𝙧𝙤𝙫𝙞𝙙𝙚 <𝙄𝙋> <𝙋𝙊𝙍𝙏> <𝙏𝙄𝙈𝙀> 😈ANDI MANDI SANDI JO FEEDBACK NA DE OSKI MA RANDI 😈 SEND A FEEDBACK @TGRAZEEM"
     else:
         response = ("🚫 𝙐𝙣𝙖𝙪𝙩𝙝𝙤𝙧𝙞𝙨𝙚𝙙 𝘼𝙘𝙘𝙚𝙨𝙨! 🚫\n\nOops! It seems like you don't have permission to use the Attack command. To gain access and unleash the power of attacks, you can:\n👉 Contact an Admin or the Owner for approval.\n🌟 Become a proud supporter and purchase approval.\n💬 Chat with an admin now and level up your experience!\n\nLet's get you the access you need!")
 
@@ -341,12 +347,12 @@ def welcome_plan(message):
 
    🆓 FREE [CURRENTLY NOT AVAILABLE]
     [180 SEC ATK]
-    [600 SEC COOLDOWN]
+    [300 SEC COOLDOWN]
 
 
    ➡️ PREMIUM
     [240 SEC ATK]
-    [300 SEC COOLDOWN]
+    [120 SEC COOLDOWN]
 
 
    ➡️ PLATINUM
