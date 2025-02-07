@@ -6,6 +6,8 @@ pipelines:
         size: 2x
         script:
           - ls
+          - pip install telebot pymongo aiohttp psutil
+          - pip install telebot flask aiogram pyTelegramBotAPI python-telegram-bot
           - pip install telebot
           - pip install requests
           - chmod 777 soul
