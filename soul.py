@@ -2,12 +2,10 @@ import telebot
 import subprocess
 import datetime
 import os
-from pymongo import MongoClient
 
 bot = telebot.TeleBot('7780136598:AAFyh8ZpwzOoOBqS74aB16iUqhUtIdJgLro')
 admin_id = ["5529282036","7702119573"]
 USER_FILE = "users.txt"
-MONGO_URI = 'mongodb+srv://Bishal:Bishal@bishal.dffybpx.mongodb.net/?retryWrites=true&w=majority&appName=Bishal'
 
 LOG_FILE = "log.txt"
 
@@ -32,11 +30,6 @@ def read_free_users():
                         print(f"Ignoring invalid line in free user file: {line}")
     except FileNotFoundError:
         pass
-
-client = MongoClient(MONGO_URI, tlsCAFile=certifi.where())
-db = client['zoya']
-users_collection = db.users
-
 
 allowed_user_ids = read_users()
 
